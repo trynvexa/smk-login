@@ -25,6 +25,12 @@
       box-sizing: border-box;
     }
 
+    #changingText{
+color:#2563eb;
+position:relative;
+transition:.4s;
+}
+
     html, body {
       margin: 0;
       min-height: 100%;
@@ -1278,7 +1284,10 @@ font-size:3.4rem;
     <section class="layout">
       <div class="hero-panel">
         <span class="eyebrow">Akses Informasi Sekolah</span>
-        <h2>Masuk dengan aman ke halaman sekolah dan layanan resmi.</h2>
+                <h2>
+        Masuk dengan aman ke
+        <span id="changingText">halaman sekolah</span>
+        </h2>
         <p>Halaman login ini dirancang untuk memberikan pengalaman cepat, intuitif, dan profesional bagi siswa, guru, dan orang tua.</p>
         <div class="feature-card">
           <p><strong>Keunggulan akses resmi SMK Swasta Mandiri:</strong></p>
@@ -1337,6 +1346,42 @@ document.getElementById("loader").classList.add("hide");
 }, 1800);
 
 });
+</script>
+
+<script>
+
+const texts = [
+"halaman sekolah",
+"portal siswa",
+"portal guru",
+"layanan resmi",
+"school akademik"
+];
+
+let index = 0;
+
+const changingText =
+document.getElementById("changingText");
+
+setInterval(() => {
+
+index++;
+
+if(index >= texts.length){
+index = 0;
+}
+
+changingText.style.opacity = 0;
+
+setTimeout(() => {
+
+changingText.innerText = texts[index];
+changingText.style.opacity = 1;
+
+}, 250);
+
+}, 2500);
+
 </script>
 </body>
   
