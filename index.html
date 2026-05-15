@@ -1373,6 +1373,46 @@ opacity:1;
 transform:translateY(0);
 }
 }
+
+/* SWIPE TRANSITION CONTAINER */
+#swipeTransition {
+  position: fixed;
+  inset: 0;
+  background: #0f172a;
+  transform: translateX(100%);
+  z-index: 999999;
+  pointer-events: none;
+}
+
+/* aktif (geser masuk layar) */
+#swipeTransition.active {
+  animation: swipeIn 0.45s ease forwards;
+}
+
+/* keluar halaman (opsional feel halus) */
+body.page-exit {
+  animation: pageExit 0.45s ease forwards;
+}
+
+@keyframes swipeIn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes pageExit {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translateX(-20px);
+  }
+}
 </style>
 </head>
 <body>
@@ -1505,17 +1545,18 @@ changingText.style.opacity = 1;
 </script>
 
 <script>
+const loginForm = document.getElementById("loginForm");
 
-loginForm.addEventListener("submit", function(e){
+loginForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
-  document.getElementById("loginLoading").classList.add("show");
+  const t = document.getElementById("transition");
+  t.classList.add("active");
 
   setTimeout(() => {
     window.location.href = "sekolah.html";
-  }, 2500);
+  }, 350);
 });
-
 </script>
   
  <!-- CLEAN PREMIUM LOADER -->
@@ -1537,6 +1578,8 @@ loginForm.addEventListener("submit", function(e){
   </div>
 
 </div>
+
+<div id="transition"></div>
 
 </body>
 </html>

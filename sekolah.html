@@ -1031,10 +1031,51 @@ body{
 
   backdrop-filter:blur(4px);
 }
+
+/* SWIPE TRANSITION CONTAINER */
+#swipeTransition {
+  position: fixed;
+  inset: 0;
+  background: #0f172a;
+  transform: translateX(100%);
+  z-index: 999999;
+  pointer-events: none;
+}
+
+/* aktif (geser masuk layar) */
+#swipeTransition.active {
+  animation: swipeIn 0.45s ease forwards;
+}
+
+/* keluar halaman (opsional feel halus) */
+body.page-exit {
+  animation: pageExit 0.45s ease forwards;
+}
+
+@keyframes swipeIn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes pageExit {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translateX(-20px);
+  }
+}
   </style>
 </head>
 
 <body>
+  <div id="fadeTransition"></div>
 
 <div class="page">
 
@@ -1512,7 +1553,21 @@ hoverItems.forEach(item => {
 
 </script>
 
+<script>
+window.addEventListener("load", () => {
+  const t = document.getElementById("transition");
+
+  t.classList.add("active");
+
+  setTimeout(() => {
+    t.classList.remove("active");
+    document.body.classList.add("page-enter");
+  }, 150);
+});
+</script>
+
 <div class="cursor-glow"></div>
+<div id="transition"></div>
 
 </body>
 </html>
