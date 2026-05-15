@@ -1269,6 +1269,110 @@ font-size:3.4rem;
 }
 
 }
+
+/* =========================
+   LOGIN LOADING
+========================= */
+
+#loginLoading{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:
+linear-gradient(
+180deg,
+#f8fbff 0%,
+#edf4ff 100%
+);
+
+z-index:999999;
+
+opacity:0;
+visibility:hidden;
+
+transition:.4s;
+}
+
+#loginLoading.show{
+opacity:1;
+visibility:visible;
+}
+
+/* Card */
+
+.login-loading-card{
+width:340px;
+padding:40px 30px;
+border-radius:30px;
+
+background:rgba(255,255,255,.82);
+
+backdrop-filter:blur(18px);
+
+text-align:center;
+
+border:1px solid rgba(255,255,255,.4);
+
+box-shadow:
+0 25px 60px rgba(15,23,42,.08);
+
+animation:loadingUp .5s ease;
+}
+
+/* Circle */
+
+.loading-circle{
+width:65px;
+height:65px;
+margin:auto;
+
+border-radius:50%;
+
+border:5px solid #dbeafe;
+border-top:5px solid #2563eb;
+
+animation:spin .8s linear infinite;
+}
+
+/* Text */
+
+.login-loading-card h2{
+margin-top:24px;
+font-size:28px;
+color:#112341;
+}
+
+.login-loading-card p{
+margin-top:10px;
+font-size:15px;
+color:#64748b;
+}
+
+/* Animation */
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+@keyframes loadingUp{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
 </style>
 </head>
 <body>
@@ -1280,6 +1384,22 @@ font-size:3.4rem;
         <h1>Akses Resmi SMK Mandiri</h1>
       </div>
     </section>
+
+    <!-- LOGIN LOADING -->
+
+<div id="loginLoading">
+
+<div class="login-loading-card">
+
+<div class="loading-circle"></div>
+
+<h2>Memasuki Halaman</h2>
+
+<p>Menyiapkan dashboard sekolah...</p>
+
+</div>
+
+</div>
 
     <section class="layout">
       <div class="hero-panel">
@@ -1340,11 +1460,11 @@ font-size:3.4rem;
 
 <script>
 window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
 
-setTimeout(() => {
-document.getElementById("loader").classList.add("hide");
-}, 1800);
-
+  setTimeout(() => {
+    loader.classList.add("hide");
+  }, 1200);
 });
 </script>
 
@@ -1383,9 +1503,23 @@ changingText.style.opacity = 1;
 }, 2500);
 
 </script>
-</body>
+
+<script>
+
+loginForm.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  document.getElementById("loginLoading").classList.add("show");
+
+  setTimeout(() => {
+    window.location.href = "sekolah.html";
+  }, 2500);
+});
+
+</script>
   
  <!-- CLEAN PREMIUM LOADER -->
+
 <div id="loader">
 
   <div class="loader-card">
@@ -1403,5 +1537,6 @@ changingText.style.opacity = 1;
   </div>
 
 </div>
+
 </body>
 </html>
