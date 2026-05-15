@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SMK Swasta Mandiri</title>
+  
+  <!-- FONT AWESOME -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    :root {
+      --bg: #eff6ff;
+      --surface: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #2563eb;
+      --primary-soft: #bfdbfe;
+      --accent: #38bdf8;
+      --border: #dbeafe;
+      --shadow: 0 28px 80px rgba(15, 23, 42, 0.12);
+      --radius: 28px;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Arial, Helvetica, sans-serif;
+      background:
+      radial-gradient(circle at top left, rgba(56,189,248,.18), transparent 28%),
+      linear-gradient(180deg,#eff6ff 0%,#f8fafc 100%);
+      color:var(--text);
+    }
+
+    .page{
+      width:min(100%,1120px);
+      margin:auto;
+      padding:32px 24px 48px;
+    }
+
+    /* NAVBAR */
+    .topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    margin-bottom:32px;
+    flex-wrap:wrap;
+
+    position:sticky;
+    top:14px;
+    z-index:999;
+    transition:.4s ease;
+  }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    .logo{
+      width:70px;
+      height:70px;
+      border-radius:22px;
+      background:linear-gradient(135deg,#2563eb,#38bdf8);
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-weight:800;
+      letter-spacing:2px;
+    }
+
+    .school-name h1{
+      font-size:1.8rem;
+      margin-bottom:5px;
+    }
+
+    .school-name p{
+      color:var(--muted);
+    }
+
+    .nav-links{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      padding:10px 18px;
+      border-radius:10px;
+      background:#fff;
+      border:1px solid rgba(37,99,235,.2);
+      color:var(--text);
+      font-weight:600;
+      transition:.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active{
+      background:linear-gradient(135deg,#2563eb,#38bdf8);
+      color:#fff;
+      transform:translateY(-2px);
+    }
+
+    .theme-button{
+      border:none;
+      padding:12px 22px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:bold;
+      background:#fff;
+      transition:.3s;
+    }
+
+    .theme-button:hover{
+      transform:translateY(-2px);
+    }
+
+    /* HERO */
+    .hero{
+      display:grid;
+      grid-template-columns:1.2fr .8fr;
+      gap:30px;
+      margin-bottom:34px;
+      align-items:center;
+    }
+
+    .hero-card,
+    .info-card,
+    .schedule-card,
+    .stat-card,
+    .major-card{
+      background:var(--surface);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      padding:32px;
+      box-shadow:var(--shadow);
+    }
+
+    .eyebrow{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(56,189,248,.12);
+      color:var(--primary);
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    .hero-card h2{
+      font-size:3rem;
+      margin-bottom:18px;
+    }
+
+    .hero-card p{
+      color:var(--muted);
+      line-height:1.8;
+      margin-bottom:24px;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+    }
+
+    .hero-actions a,
+    .hero-actions button{
+      border:none;
+      padding:14px 24px;
+      border-radius:999px;
+      cursor:pointer;
+      font-weight:bold;
+      text-decoration:none;
+      transition:.3s;
+    }
+
+    .hero-actions a{
+      background:linear-gradient(135deg,#2563eb,#38bdf8);
+      color:#fff;
+    }
+
+    .hero-actions button{
+      background:#e0efff;
+    }
+
+    .hero-actions a:hover,
+    .hero-actions button:hover{
+      transform:translateY(-2px);
+    }
+
+    .hero-image{
+      overflow:hidden;
+      border-radius:28px;
+      min-height:420px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* STATS */
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+      margin-bottom:32px;
+    }
+
+    .stat-card{
+      text-align:center;
+    }
+
+    .stat-number{
+      display:block;
+      font-size:2.2rem;
+      font-weight:800;
+      color:var(--primary);
+      margin-bottom:8px;
+    }
+
+    .stat-label{
+      color:var(--muted);
+    }
+
+    /* FEATURES */
+    .feature-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+      margin-bottom:32px;
+    }
+
+    .feature-card{
+      background:linear-gradient(
+      180deg,
+      rgba(37,99,235,.12),
+      rgba(56,189,248,.06)
+      );
+      border-radius:24px;
+      padding:22px;
+      transition:.3s;
+    }
+
+    .feature-card:hover{
+      transform:translateY(-5px);
+    }
+
+    .feature-icon{
+      font-size:2rem;
+      margin-bottom:14px;
+      display:block;
+    }
+
+    .feature-card h4{
+      margin-bottom:10px;
+    }
+
+    .feature-card p{
+      color:var(--muted);
+      line-height:1.7;
+    }
+
+    /* JURUSAN */
+    .major-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:24px;
+      margin-bottom:32px;
+    }
+
+    .major-card{
+      transition:.3s;
+    }
+
+    .major-card:hover{
+      transform:translateY(-6px);
+    }
+
+    .major-header{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin-bottom:18px;
+    }
+
+    .major-icon{
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      background:linear-gradient(135deg,#2563eb,#38bdf8);
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-size:1.5rem;
+    }
+
+    .major-title{
+      color:var(--primary);
+      margin-bottom:4px;
+    }
+
+    .major-subtitle{
+      color:var(--muted);
+    }
+
+    .major-description{
+      color:var(--muted);
+      line-height:1.7;
+      margin-bottom:18px;
+    }
+
+    .major-skills{
+      list-style:none;
+    }
+
+    .major-skills li{
+      margin-bottom:10px;
+      font-weight:600;
+    }
+
+    /* INFO */
+    .section-title{
+      margin-bottom:22px;
+      font-weight:800;
+      color:var(--primary);
+      text-transform:uppercase;
+      letter-spacing:2px;
+    }
+
+    .info-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+    }
+
+    .info-item{
+      background:#f8fbff;
+      border-radius:24px;
+      padding:24px;
+      border:1px solid #dbeafe;
+      transition:.3s;
+    }
+
+    .info-item:hover{
+      transform:translateY(-4px);
+    }
+
+    .info-item h3{
+      margin-bottom:12px;
+    }
+
+    .info-item p,
+    .info-item li{
+      color:#475569;
+      line-height:1.8;
+    }
+
+    .info-item ul{
+      padding-left:20px;
+    }
+
+    /* TABLE */
+    /* ================= JADWAL SIMPLE MODERN ================= */
+
+.schedule-card{
+  background:
+  linear-gradient(
+    145deg,
+    rgba(255,255,255,.96),
+    rgba(239,246,255,.96)
+  );
+
+  border:1px solid rgba(37,99,235,.12);
+
+  border-radius:30px;
+
+  padding:34px;
+
+  box-shadow:
+  0 15px 40px rgba(37,99,235,.08);
+}
+
+/* TITLE */
+
+.schedule-card .section-title{
+  font-size:1.8rem;
+  color:#2563eb;
+  margin-bottom:24px;
+}
+
+/* TABLE */
+
+.schedule{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0 12px;
+}
+
+/* HEADER */
+
+.schedule th{
+  background:
+  linear-gradient(
+    135deg,
+    #2563eb,
+    #38bdf8
+  );
+
+  color:white;
+
+  padding:16px;
+
+  border:none;
+
+  font-size:1rem;
+}
+
+.schedule th:first-child{
+  border-radius:14px 0 0 14px;
+}
+
+.schedule th:last-child{
+  border-radius:0 14px 14px 0;
+}
+
+/* BODY */
+
+.schedule td{
+  background:white;
+
+  padding:18px;
+
+  color:#0f172a;
+
+  font-weight:600;
+
+  border:none;
+
+  transition:.3s ease;
+}
+
+/* rounded */
+
+.schedule td:first-child{
+  border-radius:14px 0 0 14px;
+}
+
+.schedule td:last-child{
+  border-radius:0 14px 14px 0;
+}
+
+/* hover hidup */
+
+.schedule tbody tr:hover td{
+  transform:translateY(-3px);
+
+  background:
+  linear-gradient(
+    135deg,
+    #f0f9ff,
+    #dbeafe
+  );
+
+  box-shadow:
+  0 10px 25px rgba(37,99,235,.10);
+}
+
+/* DARK MODE */
+
+.dark-mode .schedule-card{
+  background:
+  linear-gradient(
+    145deg,
+    #0f172a,
+    #111827
+  );
+
+  border:1px solid rgba(59,130,246,.16);
+}
+
+.dark-mode .schedule td{
+  background:#1e293b;
+  color:#f8fafc;
+}
+
+.dark-mode .schedule tbody tr:hover td{
+  background:
+  linear-gradient(
+    135deg,
+    #1e3a8a,
+    #0f172a
+  );
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .schedule-card{
+    padding:22px;
+  }
+
+  .schedule th,
+  .schedule td{
+    padding:14px;
+    font-size:.9rem;
+  }
+}
+    /* FOOTER */
+    .footer{
+      text-align:center;
+      margin-top:40px;
+      color:var(--muted);
+    }
+
+    .footer a{
+      color:var(--primary);
+      text-decoration:none;
+      font-weight:bold;
+    }
+
+   /* ===== MODERN INFO SECTION ===== */
+
+.dark-mode .info-card{
+  position:relative;
+  overflow:hidden;
+
+  background:
+  linear-gradient(
+  145deg,
+  #020617,
+  #081225,
+  #0f172a
+  );
+
+  border:1px solid rgba(59,130,246,.15);
+
+  border-radius:34px;
+
+  padding:42px;
+
+  box-shadow:
+  0 20px 60px rgba(0,0,0,.45);
+}
+
+/* garis glow background */
+.dark-mode .info-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:
+  radial-gradient(
+  circle at top left,
+  rgba(37,99,235,.18),
+  transparent 28%
+  ),
+
+  radial-gradient(
+  circle at bottom right,
+  rgba(56,189,248,.12),
+  transparent 30%
+  );
+
+  pointer-events:none;
+}
+
+/* title */
+.dark-mode .section-title{
+  position:relative;
+  color:#3b82f6;
+  font-size:2rem;
+  margin-bottom:34px;
+  letter-spacing:2px;
+}
+
+/* garis bawah title */
+.dark-mode .section-title::after{
+  content:"";
+  display:block;
+
+  width:90px;
+  height:4px;
+
+  margin-top:14px;
+
+  border-radius:999px;
+
+  background:
+  linear-gradient(
+  90deg,
+  #2563eb,
+  #38bdf8
+  );
+}
+
+/* grid */
+.dark-mode .info-grid{
+  gap:30px;
+}
+
+/* card */
+.dark-mode .info-item{
+  position:relative;
+  overflow:hidden;
+
+  background:
+  linear-gradient(
+  145deg,
+  rgba(15,23,42,.95),
+  rgba(30,41,59,.92)
+  );
+
+  border-radius:30px;
+
+  padding:34px;
+
+  border:1px solid rgba(59,130,246,.18);
+
+  transition:.45s ease;
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.3);
+}
+
+/* glow pojok */
+.dark-mode .info-item::before{
+  content:"";
+  position:absolute;
+  width:120px;
+  height:120px;
+  border-radius:50%;
+
+  background:
+  radial-gradient(
+  circle,
+  rgba(59,130,246,.18),
+  transparent 70%
+  );
+
+  top:-30px;
+  right:-30px;
+}
+
+/* hover */
+.dark-mode .info-item:hover{
+  transform:
+  translateY(-8px)
+  scale(1.02);
+
+  border-color:rgba(96,165,250,.45);
+
+  box-shadow:
+  0 20px 50px rgba(37,99,235,.22);
+}
+
+/* judul */
+.dark-mode .info-item h3{
+  color:#fff;
+  font-size:1.5rem;
+  margin-bottom:18px;
+}
+
+/* isi */
+.dark-mode .info-item p,
+.dark-mode .info-item li,
+.dark-mode .info-item a{
+  color:#cbd5e1;
+  line-height:2;
+  font-size:1.02rem;
+}
+
+/* link */
+.dark-mode .info-item a{
+  color:#60a5fa;
+  text-decoration:none;
+  font-weight:700;
+}
+
+.dark-mode .info-item a:hover{
+  color:#93c5fd;
+}
+
+    @media(max-width:860px){
+
+      .hero,
+      .stats,
+      .feature-grid,
+      .info-grid{
+        grid-template-columns:1fr;
+      }
+
+      .hero-card h2{
+        font-size:2.2rem;
+      }
+    }
+
+    /* ================= SOCIAL MEDIA PREMIUM ================= */
+
+.social-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:22px;
+}
+
+.social-card{
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:24px;
+  border-radius:28px;
+  text-decoration:none;
+  color:white;
+  transition:.45s ease;
+  isolation:isolate;
+}
+
+.social-card::before{
+  content:"";
+  position:absolute;
+  width:220px;
+  height:220px;
+  border-radius:50%;
+  background:rgba(255,255,255,.15);
+  top:-120px;
+  right:-100px;
+  transition:.5s;
+}
+
+.social-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,.15),
+    transparent
+  );
+  opacity:0;
+  transition:.4s;
+}
+
+.social-card:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 25px 50px rgba(0,0,0,.18);
+}
+
+.social-card:hover::before{
+  transform:scale(1.3);
+}
+
+.social-card:hover::after{
+  opacity:1;
+}
+
+.social-card i{
+  width:65px;
+  height:65px;
+  border-radius:22px;
+  display:grid;
+  place-items:center;
+  font-size:1.7rem;
+  background:rgba(255,255,255,.18);
+  backdrop-filter:blur(10px);
+  position:relative;
+  z-index:2;
+  transition:.4s;
+}
+
+.social-card:hover i{
+  transform:rotate(-8deg) scale(1.08);
+}
+
+.social-card .text{
+  position:relative;
+  z-index:2;
+}
+
+.social-card h3{
+  font-size:1.1rem;
+  margin-bottom:4px;
+  font-weight:700;
+}
+
+.social-card p{
+  font-size:.92rem;
+  opacity:.9;
+}
+
+/* INSTAGRAM */
+
+.instagram{
+  background:linear-gradient(
+    135deg,
+    #833ab4,
+    #fd1d1d,
+    #fcb045
+  );
+}
+
+/* TIKTOK */
+
+.tiktok{
+  background:linear-gradient(
+    135deg,
+    #0f172a,
+    #111827,
+    #1e293b
+  );
+}
+
+/* YOUTUBE */
+
+.youtube{
+  background:linear-gradient(
+    135deg,
+    #ff0000,
+    #dc2626,
+    #991b1b
+  );
+}
+
+/* ANIMASI */
+
+.social-card{
+  animation:floatCard 4s ease-in-out infinite;
+}
+
+.social-card:nth-child(2){
+  animation-delay:.8s;
+}
+
+.social-card:nth-child(3){
+  animation-delay:1.6s;
+}
+
+@keyframes floatCard{
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-6px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .social-card{
+    padding:20px;
+  }
+
+  .social-card i{
+    width:58px;
+    height:58px;
+    font-size:1.4rem;
+  }
+}
+
+@media(max-width:860px){
+
+  .hero,
+  .stats,
+  .feature-grid,
+  .info-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero-card h2{
+    font-size:2.2rem;
+  }
+}
+
+/* TEMPEL CSS DARK MODE DISINI */
+.dark-mode{
+  --surface:#0f172a;
+  --text:#f8fafc;
+}
+
+/* dst */
+
+/* ================= SCROLL ANIMATION ================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(70px);
+  transition:
+  opacity .9s ease,
+  transform .9s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* variasi */
+
+.reveal-left{
+  opacity:0;
+  transform:translateX(-80px);
+  transition:.9s ease;
+}
+
+.reveal-left.active{
+  opacity:1;
+  transform:translateX(0);
+}
+
+.reveal-right{
+  opacity:0;
+  transform:translateX(80px);
+  transition:.9s ease;
+}
+
+.reveal-right.active{
+  opacity:1;
+  transform:translateX(0);
+}
+
+/* zoom */
+
+.reveal-zoom{
+  opacity:0;
+  transform:scale(.8);
+  transition:.8s ease;
+}
+
+.reveal-zoom.active{
+  opacity:1;
+  transform:scale(1);
+}    
+
+/* ================= NAVBAR BLUR ================= */
+
+.topbar.scrolled{
+
+  background:
+  rgba(255,255,255,.65);
+
+  backdrop-filter:blur(16px);
+
+  padding:18px 22px;
+
+  border-radius:26px;
+
+  box-shadow:
+  0 10px 30px rgba(37,99,235,.10);
+
+  border:
+  1px solid rgba(255,255,255,.4);
+}
+
+/* DARK MODE */
+
+.dark-mode .topbar.scrolled{
+
+  background:
+  rgba(15,23,42,.72);
+
+  border:
+  1px solid rgba(255,255,255,.06);
+
+  box-shadow:
+  0 10px 30px rgba(0,0,0,.35);
+}
+
+/* ================= CUSTOM CURSOR ================= */
+
+body{
+  cursor:none;
+}
+
+.cursor{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+  z-index:9999;
+
+  background:linear-gradient(
+    135deg,
+    #2563eb,
+    #38bdf8
+  );
+
+  box-shadow:
+  0 0 20px rgba(37,99,235,.7),
+  0 0 40px rgba(56,189,248,.5);
+
+  transform:translate(-50%,-50%);
+  transition:
+  transform .08s linear,
+  width .2s,
+  height .2s,
+  background .3s;
+}
+
+/* efek hover */
+
+.cursor.active{
+  width:38px;
+  height:38px;
+
+  background:rgba(56,189,248,.25);
+
+  border:2px solid #38bdf8;
+
+  backdrop-filter:blur(4px);
+}
+  </style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- NAVBAR -->
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo">SMK</div>
+
+      <div class="school-name">
+        <h1>SMK Swasta Mandiri</h1>
+        <p>Praktik Digital & Kewirausahaan untuk Generasi Muda</p>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="#" class="active">Beranda</a>
+      <a href="contact.html">Hubungi Kami</a>
+    </div>
+
+    <button id="themeToggle" class="theme-button">
+      Mode Gelap
+    </button>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero reveal">
+
+    <div class="hero-card">
+      <span class="eyebrow">Tentang Sekolah</span>
+
+      <h2>SMK Swasta Mandiri</h2>
+
+      <p>
+        SMK Swasta Mandiri mempersiapkan siswa menjadi profesional muda
+        dengan kemampuan teknologi, desain, dan bisnis yang siap pakai.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#schedule">Lihat Jadwal</a>
+        <button id="showMission">Tampilkan Misi</button>
+      </div>
+
+      <div id="missionPanel"
+      style="
+      display:none;
+      margin-top:20px;
+      padding:18px;
+      border-radius:20px;
+      background:rgba(37,99,235,.08);
+      ">
+        <strong>Misi Sekolah</strong>
+
+        <p style="margin-top:10px;">
+          Menyelenggarakan pendidikan berbasis kompetensi yang kuat,
+          membangun karakter kerja dan kemitraan industri.
+        </p>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="zikri.jpg" alt="SMK">
+    </div>
+
+  </section>
+
+  <!-- STATS -->
+  <section class="stats reveal-zoom">
+    <div class="stat-card">
+      <span class="stat-number" data-target="24">0</span>
+      <p class="stat-label">Program Keahlian</p>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-number" data-target="350">0</span>
+      <p class="stat-label">Lulusan Setiap Tahun</p>
+    </div>
+
+    <div class="stat-card">
+      <span class="stat-number" data-target="98">0</span>
+      <p class="stat-label">Persentase Kompeten</p>
+    </div>
+
+  </section>
+
+  <!-- FEATURE -->
+ <section class="feature-grid reveal">
+
+    <div class="feature-card">
+      <span class="feature-icon">💻</span>
+      <h4>Fasilitas Modern</h4>
+      <p>Lab komputer dan perangkat praktik terbaru.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="feature-icon">🎓</span>
+      <h4>Pengajar Profesional</h4>
+      <p>Guru berpengalaman di bidang teknologi dan bisnis.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="feature-icon">🌱</span>
+      <h4>Program Wirausaha</h4>
+      <p>Pelatihan bisnis praktis dan proyek siswa.</p>
+    </div>
+
+    <div class="feature-card">
+      <span class="feature-icon">🤝</span>
+      <h4>Kerja Sama Industri</h4>
+      <p>Magang dan peluang kerja nyata untuk siswa.</p>
+    </div>
+
+  </section>
+
+  <!-- JURUSAN -->
+  <section id="jurusan" class="major-grid reveal-left">
+
+    <div class="major-card">
+      <div class="major-header">
+        <div class="major-icon">💻</div>
+
+        <div>
+          <h3 class="major-title">RPL</h3>
+          <p class="major-subtitle">Rekayasa Perangkat Lunak</p>
+        </div>
+      </div>
+
+      <p class="major-description">
+        Fokus pada pemrograman, website, aplikasi, dan database.
+      </p>
+
+      <ul class="major-skills">
+        <li>✔ Pemrograman Web</li>
+        <li>✔ UI/UX Design</li>
+        <li>✔ Database</li>
+      </ul>
+    </div>
+
+    <div class="major-card">
+      <div class="major-header">
+        <div class="major-icon">🌐</div>
+
+        <div>
+          <h3 class="major-title">TKJ</h3>
+          <p class="major-subtitle">Teknik Komputer Jaringan</p>
+        </div>
+      </div>
+
+      <p class="major-description">
+        Fokus pada jaringan komputer dan administrasi server.
+      </p>
+
+      <ul class="major-skills">
+        <li>✔ Jaringan</li>
+        <li>✔ Keamanan Sistem</li>
+        <li>✔ Server</li>
+      </ul>
+    </div>
+
+    <div class="major-card">
+      <div class="major-header">
+        <div class="major-icon">🚗</div>
+
+        <div>
+          <h3 class="major-title">TKR</h3>
+          <p class="major-subtitle">Teknik Kendaraan Ringan</p>
+        </div>
+      </div>
+
+      <p class="major-description">
+        Fokus pada perawatan dan teknologi otomotif.
+      </p>
+
+      <ul class="major-skills">
+        <li>✔ Mesin</li>
+        <li>✔ Kelistrikan</li>
+        <li>✔ Diagnosa</li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- INFO -->
+  <section id="info" class="info-card reveal-right">
+
+    <div class="section-title">
+      Informasi Sekolah
+    </div>
+
+    <div class="info-grid">
+
+      <div class="info-item">
+  <h3>🎯 Visi</h3>
+
+  <p>
+    Menjadi SMK mandiri yang menghasilkan lulusan kreatif.
+  </p>
+</div>
+
+      <div class="info-item">
+  <h3>🚀 Misi</h3>
+
+  <ul>
+    <li>Pendidikan berbasis kompetensi</li>
+    <li>Mengembangkan soft skill</li>
+    <li>Kerja sama industri</li>
+  </ul>
+</div>
+
+     <div class="info-item">
+  <h3>📍 Alamat</h3>
+
+  <p>Jl. Mandiri No.50, Bandung</p>
+</div>
+
+      <div class="info-item">
+  <h3>🌐 Website</h3>
+
+  <p>
+    <a href="#">
+      www.smkmandiri.sch.id
+    </a>
+  </p>
+</div>
+
+    </div>
+
+  </section>
+
+  <!-- TABLE -->
+  <section id="schedule" class="schedule-card reveal">
+
+    <div class="section-title">
+      Jadwal Pelajaran
+    </div>
+
+    <table class="schedule">
+
+      <thead>
+        <tr>
+          <th>Jam</th>
+          <th>Mata Pelajaran</th>
+          <th>Guru</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>07:30 - 08:15</td>
+          <td>PKK</td>
+          <td>Bpk. Andi</td>
+        </tr>
+
+        <tr>
+          <td>08:15 - 09:00</td>
+          <td>TKJ</td>
+          <td>Ibu Maya</td>
+        </tr>
+
+        <tr>
+          <td>09:15 - 10:00</td>
+          <td>Desain Grafis</td>
+          <td>Bpk. Rian</td>
+        </tr>
+
+        <tr>
+          <td>10:00 - 10:45</td>
+          <td>Bahasa Inggris</td>
+          <td>Ibu Dina</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </section>
+
+  <!-- SOSIAL MEDIA -->
+<section class="info-card reveal-zoom" style="margin-top:32px;">
+
+  <div class="section-title">
+    Sosial Media Sekolah
+  </div>
+
+  <div class="social-container">
+
+    <a href="https://instagram.com/" target="_blank" class="social-card instagram">
+      <i class="fab fa-instagram"></i>
+
+      <div>
+        <h3>Instagram</h3>
+        <p>@smkmandiri</p>
+      </div>
+    </a>
+
+    <a href="https://tiktok.com/" target="_blank" class="social-card tiktok">
+      <i class="fab fa-tiktok"></i>
+
+      <div>
+        <h3>TikTok</h3>
+        <p>@smkmandiri</p>
+      </div>
+    </a>
+
+    <a href="https://youtube.com/" target="_blank" class="social-card youtube">
+      <i class="fab fa-youtube"></i>
+
+      <div>
+        <h3>YouTube</h3>
+        <p>SMK Swasta Mandiri</p>
+      </div>
+    </a>
+
+  </div>
+
+</section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>
+      SMK Swasta Mandiri — membangun kompetensi praktis.
+    </p>
+  </footer>
+</div>
+
+<script>
+
+  // COUNTER
+  const counters = document.querySelectorAll(".stat-number");
+
+  counters.forEach(counter => {
+
+    const target = +counter.dataset.target;
+    let count = 0;
+
+    const updateCounter = () => {
+
+      const speed = target / 80;
+
+      count += speed;
+
+      if(count < target){
+
+        counter.innerText = Math.ceil(count);
+
+        requestAnimationFrame(updateCounter);
+
+      } else {
+
+        counter.innerText = target;
+      }
+    };
+
+    updateCounter();
+  });
+
+  // DARK MODE
+  const themeToggle = document.getElementById("themeToggle");
+
+  themeToggle.addEventListener("click", () => {
+
+    document.body.classList.toggle("dark-mode");
+
+    if(document.body.classList.contains("dark-mode")){
+
+      themeToggle.innerText = "Mode Terang";
+
+    } else {
+
+      themeToggle.innerText = "Mode Gelap";
+    }
+  });
+
+  // MISSION
+  const showMission = document.getElementById("showMission");
+  const missionPanel = document.getElementById("missionPanel");
+
+  showMission.addEventListener("click", () => {
+
+    if(missionPanel.style.display === "block"){
+
+      missionPanel.style.display = "none";
+      showMission.innerText = "Tampilkan Misi";
+
+    } else {
+
+      missionPanel.style.display = "block";
+      showMission.innerText = "Sembunyikan Misi";
+    }
+  });
+
+  /* ================= SCROLL REVEAL LOOP ================= */
+
+const reveals = document.querySelectorAll(
+  ".reveal, .reveal-left, .reveal-right, .reveal-zoom"
+);
+
+function scrollReveal(){
+
+  reveals.forEach(item => {
+
+    const windowHeight = window.innerHeight;
+
+    const revealTop =
+    item.getBoundingClientRect().top;
+
+    const revealPoint = 120;
+
+    if(revealTop < windowHeight - revealPoint){
+
+      item.classList.add("active");
+
+    } else {
+
+      item.classList.remove("active");
+    }
+
+  });
+
+}
+
+window.addEventListener(
+  "scroll",
+  scrollReveal
+);
+
+scrollReveal();
+
+/* ================= NAVBAR SCROLL ================= */
+
+window.addEventListener("scroll",()=>{
+
+  const navbar =
+  document.querySelector(".topbar");
+
+  if(window.scrollY > 40){
+
+    navbar.classList.add("scrolled");
+
+  } else {
+
+    navbar.classList.remove("scrolled");
+  }
+
+});
+
+/* ================= CUSTOM CURSOR ================= */
+
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", (e) => {
+
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+
+});
+
+/* hover effect */
+
+const hoverItems = document.querySelectorAll(
+  "a, button, .info-item, .major-card, .feature-card, .social-card"
+);
+
+hoverItems.forEach(item => {
+
+  item.addEventListener("mouseenter", () => {
+    cursor.classList.add("active");
+  });
+
+  item.addEventListener("mouseleave", () => {
+    cursor.classList.remove("active");
+  });
+
+});
+
+</script>
+
+<div class="cursor-glow"></div>
+
+</body>
+</html>
